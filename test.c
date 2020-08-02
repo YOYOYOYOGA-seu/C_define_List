@@ -1,7 +1,7 @@
 /*
  * @Author Shi Zhangkun
  * @Date 2020-08-01 06:22:43
- * @LastEditTime 2020-08-02 00:46:44
+ * @LastEditTime 2020-08-02 02:24:29
  * @LastEditors Shi Zhangkun
  * @Description none
  * @FilePath /test/test.c
@@ -20,31 +20,31 @@ int main(int argc, char * aragv[])
   test_t testArror[10];
   test_t* p;
   int x;
-  
+ 
   miniList_t(test_t) head; //list 
-  miniList_init(head);//list init 
+  miniList_t(test_t) * pHead = &head;
 
+  miniList_init(pHead);//list init 
   for(int i = 0; i < 10; i++)
   {
-    miniList_insertTail(head,&testArror[i],lru);
-  }
-
-  for(int i = 0; i < 5; i++)
-  {
-    p = miniList_PopHead(head,lru);
+    miniList_insertTail(pHead,&testArror[i],lru);
   }
   for(int i = 0; i < 5; i++)
   {
-    p = miniList_PopTail(head,lru);
+    p = miniList_PopHead(pHead,lru);
+  }
+  for(int i = 0; i < 5; i++)
+  {
+    p = miniList_PopTail(pHead,lru);
   }
 
   for(int i = 0; i < 10; i++)
   {
-    miniList_insertHead(head,&testArror[i],lru);
+    miniList_insertHead(pHead,&testArror[i],lru);
   }
-  miniList_matchMtoM(head ,p ,a ,> ,b ,lru);//march item, condition: test_t::a > test_t::b
-  miniList_matchMtoV(head ,p ,a ,== ,0 ,lru);//march itemcondition: test_t::a == 0
-  miniList_remove(head,p,lru);// remove item
+  miniList_matchMtoM(pHead ,p ,a ,> ,b ,lru);//march item, condition: test_t::a > test_t::b
+  miniList_matchMtoV(pHead ,p ,a ,== ,0 ,lru);//march itemcondition: test_t::a == 0
+  miniList_remove(pHead,p,lru);// remove item
   while(1)
   {
 
